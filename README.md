@@ -51,7 +51,7 @@ Below are test links to verify the functionality of the API. Not that any links 
 | [https://f1-web-api.glitch.me/api/drivers/hamilton](https://f1-web-api.glitch.me/api/drivers/hamilton) | Valid     |
 | [https://f1-web-api.glitch.me/api/drivers/HAMilton](https://f1-web-api.glitch.me/api/drivers/HAMilton) | Valid     |
 | [https://f1-web-api.glitch.me/api/drivers/randy](https://f1-web-api.glitch.me/api/drivers/randy) | Very Invalid Request    |
-| [https://f1-web-api.glitch.me/api/driverResults/piastri/2023](https://f1-web-api.glitch.me/api/driverResults/piastre/2023) | Valid    |
+| [https://f1-web-api.glitch.me/api/driverResults/piastri/2023](https://f1-web-api.glitch.me/api/driverResults/piastri/2023) | Valid    |
 | [https://f1-web-api.glitch.me/api/driverResults/piastre/2002](https://f1-web-api.glitch.me/api/driverResults/piastre/2002) | Invalid Request    |
 | [https://f1-web-api.glitch.me/api/races/season/2023](https://f1-web-api.glitch.me/api/races/season/2023) | Valid     |
 | [https://f1-web-api.glitch.me/api/races/seasoning/2023](https://f1-web-api.glitch.me/api/races/seasoning/2023) | Invalid Request    |
