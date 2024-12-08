@@ -1,6 +1,6 @@
 const express = require('express');
+const PORT = process.env.PORT;
 const app = express();
-const port = process.env.PORT;
 const fs = require('fs');
 
 const path = require('path');
@@ -10,6 +10,16 @@ const driversPath = path.join(__dirname, 'data', 'drivers.json');
 const racesPath = path.join(__dirname, 'data', 'races.json');
 const resultsPath = path.join(__dirname, 'data', 'results.json');
 
+const readJSON = (filePath) => {
+    try {
+        const fullPath = path.resolve(__dirname, filePath);
+        const data = fs.readFileSync(fullPath, 'utf-8');
+        return JSON.parse(data);
+    } catch (error) {
+        console.error(`Error reading file ${filePath}:`, error);
+        return [];
+    }
+};
 const circuits = readJSON(circuitsPath);
 const constructors = readJSON(constructorsPath);
 const drivers = readJSON(driversPath);
@@ -19,11 +29,8 @@ const results = readJSON(resultsPath);
 app.use(express.json());
 
 app.get('/api/circuits', (req, res) => { res.json({ circuits }); });
-
 app.get('/api/constructors', (req, res) => { res.json({ constructors }); });
-
 app.get('/api/drivers', (req, res) => { res.json({ drivers }); });
-
 
 app.get('/api/circuits/:circuitId', (req, res) => {
     const circuitId = parseInt(req.params.circuitId);
@@ -115,17 +122,17 @@ app.use((req, res) => {
     res.status(404).json({ error: 'Endpoint not found. Please check the URL and try again.' });
 });
 
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
 
-function readJSON(path) {
-    try {
-        const newPath = path.resolve(__dirname, path);
-        const data = fs.readFileSync(newPath, 'utf-8');
-        return JSON.parse(data);
-    } catch (err) {
-        console.error(err);
-        return null;
-    }
-}
+// function readJSON(path) {
+//     try {
+//         const newPath = path.resolve(__dirname, path);
+//         const data = fs.readFileSync(newPath, 'utf-8');
+//         return JSON.parse(data);
+//     } catch (err) {
+//         console.error(err);
+//         return [];
+//     }
+// }
