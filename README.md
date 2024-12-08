@@ -1,7 +1,7 @@
 # F1 Web API
 
 ## Description
-The F1 Web API is a Node.js-based RESTful API that provides data about Formula 1 circuits, constructors, drivers, races, and results. It is hosted on [Glitch](https://f1-web-api.glitch.me) and supports a variety of endpoints for retrieving specific details. This project was developed as part of an assignment to demonstrate API development skills using Node.js.
+The F1 Web API is a Node.js-based RESTful API that provides data about Formula 1 circuits, constructors, drivers, races, and results. It is hosted on [Glitch](https://glitch.com/) and supports a variety of endpoints for retrieving specific details. This project was developed as part of an assignment to demonstrate API development skills using Node.js.
 
 ## Hosting and Base URL
 The API is hosted at: `https://f1-web-api.glitch.me`  
