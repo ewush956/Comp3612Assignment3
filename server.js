@@ -35,8 +35,7 @@ app.get('/api/drivers', (req, res) => { res.json({ drivers }); });
 app.get('/api/circuits/:circuitId', (req, res) => {
     const circuitId = parseInt(req.params.circuitId);
     const circuit = circuits.find(c => c.circuitId === circuitId);
-    if (circuit)
-        res.json(circuit);
+    if (circuit) res.json(circuit);
     else
         res.status(404).json({ error: 'Circuit not found' });
 });
@@ -97,9 +96,9 @@ app.get('/api/drivers/:driverRef', (req, res) => {
 
 app.get('/api/driverResults/:driver/:year', (req, res) => {
     const { driver, year } = req.params;
-    const driverResults = results.filter(
-        r => r.driver.ref === driver.toLowerCase() && r.race.year === parseInt(year)
-    );
+    const driverResults = results.filter(r => {
+        r.driver.ref === driver.toLowerCase() && r.race.year === parseInt(year)
+    });
     if (driverResults.length > 0)
         res.json({ driver, year: parseInt(year), results: driverResults });
     else
@@ -108,31 +107,14 @@ app.get('/api/driverResults/:driver/:year', (req, res) => {
 
 app.get('/api/constructorResults/:constructor/:year', (req, res) => {
     const { constructor, year } = req.params;
-    const constructorResults = results.filter(
-        r => r.constructor.ref === constructor.toLowerCase() && r.race.year === parseInt(year)
-    );
+    const constructorResults = results.filter(r => {
+        r.constructor.ref === constructor.toLowerCase() && r.race.year === parseInt(year)
+    });
     if (constructorResults.length > 0)
         res.json({ constructor, year: parseInt(year), results: constructorResults });
     else
         res.status(404).json({ error: 'No results found for the specified constructor and year' });
-
 });
 
-app.use((req, res) => {
-    res.status(404).json({ error: 'Endpoint not found. Please check the URL and try again.' });
-});
-
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
-
-// function readJSON(path) {
-//     try {
-//         const newPath = path.resolve(__dirname, path);
-//         const data = fs.readFileSync(newPath, 'utf-8');
-//         return JSON.parse(data);
-//     } catch (err) {
-//         console.error(err);
-//         return [];
-//     }
-// }
+app.use((req, res) => { res.status(404).json({ error: 'Endpoint not found. Please check the URL and try again.' }); });
+app.listen(PORT, () => { console.log(`Server is running on http://localhost:${PORT}`); });
