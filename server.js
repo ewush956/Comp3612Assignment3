@@ -96,9 +96,9 @@ app.get('/api/drivers/:driverRef', (req, res) => {
 
 app.get('/api/driverResults/:driver/:year', (req, res) => {
     const { driver, year } = req.params;
-    const driverResults = results.filter(r => {
+    const driverResults = results.filter(r =>
         r.driver.ref === driver.toLowerCase() && r.race.year === parseInt(year)
-    });
+    );
     if (driverResults.length > 0)
         res.json({ driver, year: parseInt(year), results: driverResults });
     else
@@ -107,9 +107,9 @@ app.get('/api/driverResults/:driver/:year', (req, res) => {
 
 app.get('/api/constructorResults/:constructor/:year', (req, res) => {
     const { constructor, year } = req.params;
-    const constructorResults = results.filter(r => {
+    const constructorResults = results.filter(r =>
         r.constructor.ref === constructor.toLowerCase() && r.race.year === parseInt(year)
-    });
+    );
     if (constructorResults.length > 0)
         res.json({ constructor, year: parseInt(year), results: constructorResults });
     else
